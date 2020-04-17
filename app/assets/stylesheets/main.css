@@ -1,0 +1,38 @@
+/**********************************************************************************************************/
+/*footer*/
+#footer{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    order: initial;
+    height: 200px;
+    position:absolute; bottom:0px; left:0px; right: 0px;
+    color: white;
+    padding-left: 200px;
+    padding-right: 50px;
+    padding-top: 30px;
+    box-sizing: border-box;
+}
+#footer_left{
+    display: flex;
+    align-content: space-around;
+}
+#footer_newsletter{
+    display: flex;
+    align-content: space-around;
+}
+#footer_contact{
+    line-height: 2px;
+}
+#input{
+    width: 500px;
+}
+#footer_right{
+    margin-right: 50px;
+    display:flex;
+    align-content: space-between;
+    margin-left: 350px;
+}
+#footer_retour{
+    writing-mode: vertical-rl;
+}

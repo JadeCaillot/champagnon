@@ -1,0 +1,53 @@
+<body>
+    <% if @event.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+            <br>
+            <p>⚠️ Les champs suivants ne sont pas correctement remplis</p>
+            <ul>
+                <% @event.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        <br>
+        </div>
+    <%end%>
+    <h2 class="display-4 text-center">Créer un évènement</h1>
+
+
+    <div class= 'container'>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+            <br><br><br>
+                <%= form_tag url_for(action: 'create'), method: "post" do%>
+                    <div class='form-group'>
+                        <%= label_tag 'titre' %>
+                        <%= text_field_tag :title, @event.title, class:'form-control' %>
+                    </div>
+                    <div class='form-group'>
+                        <%= label_tag 'description' %>
+                        <%= text_area_tag :description, @event.description, class:'form-control' %>
+                    </div>
+                    <div class='form-group'>
+                        <%= label_tag 'lieu' %>
+                        <%= text_field_tag :location, @event.location, class:'form-control' %>
+                    </div>  
+                    <div class='form-group'>
+                        <%= label_tag 'date de début' %>
+                        <%= date_field_tag :start_date, Date.today, class: "form-control" %>
+                    </div>
+                    <div class='form-group'>
+                        <%= label_tag 'durée' %>
+                        <%= number_field_tag :duration, @event.duration, min: 5, max: 120, :step => 'any', class: "number" %>
+                    </div>
+                    <div class='form-group'>
+                        <%= label_tag 'prix' %>
+                        <%= number_field_tag :price, @event.price, min: 1, max: 1000, :step => 'any', class: "number" %>
+                    </div>
+                    
+                    <div class="actions mt-5"> 
+                    <%= submit_tag 'Ajouter', class:'btn btn-block btn-info' %></div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</body>

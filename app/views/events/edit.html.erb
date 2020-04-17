@@ -1,0 +1,54 @@
+<body>
+    <% if @event.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+            <br>
+            <p>⚠️ Les champs suivants ne sont pas correctement remplis</p>
+            <ul>
+                <% @event.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        <br>
+        </div>
+    <%end%>
+    <h2 class="display-4 text-center">Modifier l'évènement</h1>
+
+
+    <div class= 'container'>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+            <br><br><br>
+                <%= form_for @event do |f|%>
+                    <div class='form-group'>
+                        <%= label_tag 'titre' %>
+                        <%= f.text_field :title, class:'form-control' %>
+                    </div>
+                    <div class='form-group'>
+                        <%= label_tag 'description' %>
+                        <%= f.text_area :description, class:'form-control' %>
+                    </div>
+                    <div class='form-group'>
+                        <%= label_tag 'lieu' %>
+                        <%= f.text_field :location, class:'form-control' %>
+                    </div>  
+                    <div class='form-group'>
+                        <%= label_tag 'date de début' %>
+                        <%= f.date_field :start_date, class: "form-control" %>
+                    </div>
+                    <div class='form-group'>
+                        <%= label_tag 'durée' %>
+                        <%= f.number_field :duration, min: 5, max: 120, :step => 'any', class: "number" %>
+                    </div>
+                    <div class='form-group'>
+                        <%= label_tag 'prix' %>
+                        <%= f.number_field :price, min: 1, max: 1000, :step => 'any', class: "number" %>
+                    </div>
+                    
+                    <div class="actions mt-5"> 
+                    <%= f.submit 'Mettre à jour', class:'btn btn-block btn-info' %>
+                    <%= link_to("Supprimer", event_path(@event.id), method: :delete, :class=>'btn btn-danger', data: { confirm: "êtes-vous sûr de vouloir supprimer ce gossip?"})%></div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</body>

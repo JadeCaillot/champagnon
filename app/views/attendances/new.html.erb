@@ -1,0 +1,24 @@
+<body style="background-color: rgb(195, 195, 195)">
+
+    <%= form_tag event_attendances_path do %>
+    <div class='mx-auto mt-5 bg-light border border-info border-lg p-3' style='width: 400px'>
+    <article>
+        <% if flash[:error].present? %>
+        <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+        </div>
+        <% end %>
+        <label class="amount">
+        <strong>Montant: <%=@amount%></strong><br/>
+        <strong>Moyen de paiement accepté : carte bancaire</strong><br/>
+        </label>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Eventbrite évènement"
+            data-amount="<%=@amount*100%>"
+            data-locale="auto"></script>
+    </div>
+    <% end %>
+</body>

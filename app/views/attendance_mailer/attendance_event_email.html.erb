@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @admin.first_name %> et bienvenue sur Evenbrite !</h1>
+    <p>
+      <%= @participant.first_name %> <%=@participant.last_name%> vient de s'inscrire à ton évènement <%= @event.title%>. Tu peux prendre contact avec ce membre via notre espace d'échange. 
+    </p>
+    <p>
+      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+    </p>
+    <p> À très vite sur monsite.fr !
+  </body>
+</html>
