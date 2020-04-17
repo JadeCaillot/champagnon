@@ -12,5 +12,9 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree .
+
+// --- general Bootstrap Theme (used by all Pages) ---
+//= require bootstrap/bootstrap.min
+//= require bootstrap/bootstrap.bundle.min
+//= require jquery/jquery.min
+//= require jquery/jquery.slim.min
