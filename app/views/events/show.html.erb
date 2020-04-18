@@ -1,40 +1,35 @@
-<html>
+<h2 class="display-4 text-center">Détail de l'évènement</h2>
+<br />
 
-  <head>
-    <title>Eventbrite THP</title>
-  </head>
+<div class="container">
+  <div class="card text-center bg-info border border-secondary">
+    <div class="card-body">
+      <h5 class="card-title"><%=@event.title%></h5>
+      <i class="card-subtitle mb-2"
+        >date:<%=@event.start_date%> durée: <%=@event.duration%></i
+      >
+      <p class="card-text"><%=@event.description%></p>
+      <p class="card-footer bg-light">prix: <%=@event.price%>€</p>
+      <% if user_signed_in? && !current_user.is_already_attending?(@event) &&
+      !current_user.is_admin?(@event) %> 
+        <%= link_to"Rejoindre", new_event_attendance_path(@event.id), class: "btn btn-secondary btn-lg" %>
 
-  <body>
+      <%elsif user_signed_in? && current_user.is_already_attending?(@event) &&
+      !current_user.is_admin?(@event)%>
+        <p>Vous êtes déjà inscrit à cet évènement</p>
 
-    <h2 class="display-4 text-center">Détail de l'évènement </h2> <br/>
+      <%elsif user_signed_in? && current_user.is_admin?(@event)%> 
+      <%=link_to 'mon espace évènement', event_attendances_path(@event.id), class: "btn btn-secondary"%> 
+      
+      <%else%>
+        <p>Vous devez être connecté pour participer à un évènement</p>
+      <%end%> 
+      
+      <%if current_user == @event.admin%> 
+        <%= link_to "Edit", edit_event_path(@event.id), class:"btn-primary"%> 
+      <%end%>
 
-   <div class='container'>
-      <div class="card text-center bg-info border border-secondary">
-        <div class="card-body">
-           <h5 class='card-title'><%=@event.title%></h5> 
-            <i class='card-subtitle mb-2'>date:<%=@event.start_date%> durée: <%=@event.duration%></i>
-            <p class='card-text'><%=@event.description%></p>
-            <p class='card-footer bg-light'>prix: <%=@event.price%>€</p>
-            <% if user_signed_in? && !current_user.is_already_attending?(@event) && !current_user.is_admin?(@event) %>
-              <%= link_to"Rejoindre", new_event_attendance_path(@event.id), class: "btn btn-secondary btn-lg" %>
-            <%elsif user_signed_in? && current_user.is_already_attending?(@event) && !current_user.is_admin?(@event)%>
-              <p>Vous êtes déjà inscrit à cet évènement</p>
-            <%elsif user_signed_in? && current_user.is_admin?(@event)%>
-              <%=link_to 'mon espace évènement', event_attendances_path(@event.id), class: "btn btn-secondary"%>
-            <%else%>
-              <p>Vous devez être connecté pour participer à un évènement</p>
-            <%end%>
-
-            <%if current_user == @event.admin%>
-             
-            <%end%>
-
-              
-    
-        </div>
-    </div>   
-     nombre d'inscrits: <%=@participant.count%>
-
-  </body>
-
-</html>
+    </div>
+  </div>
+  <div class="text-muted">nombre d'inscrits: <%=@participant.count%></div>
+</div>

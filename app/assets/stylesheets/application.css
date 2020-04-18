@@ -12,10 +12,5 @@
  
  * --- general bootstrap -used by all pages- ---
  *= require bootstrap/bootstrap.min
- *= require bootstrap/bootstrap-grid.min
- *= require bootstrap/bootstrap-reboot.min
-
-  * --- index articles -used by some pages- --- *
- *= require shop-homepage
 
  */

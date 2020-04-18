@@ -1,27 +1,26 @@
-<body>
-    <h2 class="display-4 text-center">Participants à l'évènement</h2> <br/>
-    <%= link_to "Modifier l'évènement", edit_event_path(@event.id) %>
 
-    <div class='container mt-5'>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                <th scope="col">Prénom</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Email</th>
-                <th scope="col">Date d'inscription</th>
-                </tr>
-            </thead>
-            <tbody>
-                <%@attendances.where(event:@event).all.each do |attendance|%>
-                    <tr>
-                        <th scope="row"><%= User.find(attendance.participant.id).first_name%></th>
-                        <td><%= User.find(attendance.participant.id).last_name%></td>
-                        <td><%= User.find(attendance.participant.id).email%></td>
-                        <td><%= attendance.created_at%></td>
-                    </tr>
-                <%end%>
-            </tbody>
-        </table>
-    </div>
-</body>
+<h2 class="display-4 text-center">Participants à l'évènement</h2> <br/>
+<%= link_to "Modifier l'évènement", edit_event_path(@event.id) %>
+
+<div class='container mt-5'>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+      <th scope="col">Prénom</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Email</th>
+      <th scope="col">Date d'inscription</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@attendances.where(event:@event).all.each do |attendance|%>
+        <tr>
+          <th scope="row"><%= User.find(attendance.participant.id).first_name%></th>
+          <td><%= User.find(attendance.participant.id).last_name%></td>
+          <td><%= User.find(attendance.participant.id).email%></td>
+          <td><%= attendance.created_at%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
