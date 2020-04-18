@@ -1,41 +1,36 @@
-<body>
-    <div class="jumbotron" style="background-image: url(https://cdn.pixabay.com/photo/2015/11/30/23/32/champagner-1071356_960_720.jpg); 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-size: cover">
-        <div class="container" style="background-color: rgba(255, 255, 255, 0.7); padding: 35px; border-radius: 15px;">
-            <h1 class="display-4 text-info">Bienvenue sur Eventbrite THP</h1>
-            <p class="lead ">Bien plus qu'une application évènementielle, c'est un moyen de se retrouver, d'échanger et d'apprendre ensemble l'art de la dégustation de champagne.</p>
-            <hr class="my-4">
-            <p class='lead'> N'hésitez plus, inscrivez-vous et créez votre premier évènement!</p>
-            <% if user_signed_in?%>
-                <%=link_to "Créer un évènement", new_event_path, class:"btn btn-info"%>
-            <%else%>
-                <%=link_to "Créer un évènement", new_event_path, class:"btn btn-info"%>
-                <%= link_to "M'inscrire", new_user_registration_path, class:'btn btn-secondary'%>
-            <%end%>
-        </div>
+<div style="margin-left: 40px; margin-right: 40px;">
+  <div class="row">
+    <div class="col-lg-3">
+      <h1 class="my-4">Categories</h1>
+      <div class="list-group">
+        <a href="#" class="list-group-item">Category 1</a>
+        <a href="#" class="list-group-item">Category 2</a>
+        <a href="#" class="list-group-item">Category 3</a>
+      </div>
     </div>
-    
-
-    <h1 class="text-center">Tous les évènements prévus en ville</h1>
-
-    
-        <div class="row d-flex justify-content-center">
-            <%@events.all.each do |event|%>
-            <div class="card bg-info col-md-2 d-flex justify-content-around border border-secondary m-2 justify-content-center" style="text-align: justify;">
-                <div class="card-header">lieu: <%=event.location%></div>
-                <div class="card-body bg-light">
-                    <h5 class='card-title'><strong><%=event.title%></strong></h5>
-                    <i class='card-subtitle mb-2'>date:<%=event.start_date%> <br/>durée: <%=event.duration%></i>
-                    <p class='card-text'><%=event.description%></p>
-                    <p class='card-footer'>prix: <%=event.price%>€</p>
-                    <%= link_to "Détails", event_path(event.id), :class=>'btn btn-secondary'%>
-                </div>
+    <!-- /.col-lg-3 -->
+    <div class="col-lg-9">
+      <div class="row">
+        <%@events.all.each do |event|%>
+        <div class="col-md-4 mb-4">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""/></a>
+            <div class="card-body">
+              <h4 class="card-title"><%=event.title%></h4>
+              <h5><%=event.price%>€</h5>
+              <p class="card-text"><%=event.description%></p>
+              <i class="card-subtitle mb-2">date: <%=event.start_date%> | durée: <%=event.duration%></i>
             </div>
-            <%end%> <br/>
+            <%= link_to "Détails", event_path(event.id), :class=>'btn
+            btn-secondary'%>
+          </br></br>
+            <div class="card-footer">
+              <small class="text-muted"
+                >&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+            </div>
+          </div>
+          <%end%>
         </div>
+      </div>
     </div>
-
-
-</body>
+  </div>
+</div>

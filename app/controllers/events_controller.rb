@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   end 
 
   def create
-    @event = Event.new(start_date: params[:start_date], duration: params[:duration], title: params[:title], description: params[:description], price: params[:price], location: params[:location], admin: current_user)
+    @event = Event.new(event_params)
     if @event.save
       redirect_to event_path(@event.id)
       flash[:success] = "L'évènement a été ajouté avec succès !"

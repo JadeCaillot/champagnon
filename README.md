@@ -6,7 +6,8 @@ It aims at creating a realistic database in Ruby on Rails that represents a Airb
 ## The Ruby version
 
 The ruby version used is 2.5.1.
-The rails version used is volontarily 5.2.3.
+The rails version used is volontarily 5.2.4.
+.
 
 ## Install from your console
 
@@ -28,7 +29,7 @@ And then access the localhost accordingly, for instance:
 `http://localhost:3000/`
 
 access to heroku app:
-'https://thp-jc-eventbrite-w6.herokuapp.com/'
+'https://champagnon.herokuapp.com/'
 
 ## Additional Gems used
 
