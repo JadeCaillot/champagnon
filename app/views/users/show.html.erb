@@ -1,16 +1,26 @@
 <h2 class="display-4 text-center">Profil</h2> <br/><br/>
 
 <div class='container'>
-  <div class="card text-center bg-info text-white">
+  <div class='text-center'>
+    <%= image_tag @user.avatar, size: '120'%>
+  </div> </br>
+  <div class='text-center'>
+    <h4 class='card-title display-5 display-flex justify-content-center'><%=@user.first_name%> <%=@user.last_name%></h4>
+  </div>
+
+  <div class="card text-center bg-light">       
     <div class="card-body">
-      <h4 class='card-title display-5'><%=@user.first_name%> <%=@user.last_name%></h4>
-      <h5 class='card-text display-6'>"<%=@user.description%>"</h5>
+      <h5 class='card-text display-6'><%=@user.description%></h5>
       <p class='card-footer'>nombre d'évènements organisés: <%=@user.events.count%></p>
-      <div class='btn'><%=link_to 'edit', edit_user_path(current_user.id), class:'btn btn-secondary'%></div>
-      <div class='btn'><%=link_to 'editer informations de connexion', edit_user_registration_path(current_user.id), class:'btn btn-secondary'%></div>
+      
     </div>
-</div>  
-<br/><br/><br/>
+  </div>
+  <div class="actions mt-2 text-center">
+
+    <%=link_to 'edit', edit_user_path(current_user.id), class:'btn btn-info text-center'%>
+    <%=link_to 'editer informations de connexion', edit_user_registration_path(current_user.id), class:'btn btn-info text-center'%>
+
+  </div>
 
 <div class="container">
   <%@events.all.each do |event|%>
