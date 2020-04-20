@@ -1,15 +1,22 @@
 <h2 class="display-4 text-center">Détail de l'évènement</h2>
 <br />
 
+<div class="text-center mb-3">
+  <% if @event.images.attached? %> 
+    <% @images.each do |image|%>
+      <%= image_tag image, size: '200', alt:"illustration"%> 
+    <% end %>
+  <% else %>
+    <i class="far fa-image fa-9x"></i>
+  <%end%>
+</div>
 <div class="container">
-  <div class="card text-center bg-info border border-secondary">
+  <div class="card text-center bg-light border border-secondary">
     <div class="card-body">
-      <h5 class="card-title"><%=@event.title%></h5>
-      <i class="card-subtitle mb-2"
-        >date:<%=@event.start_date%> durée: <%=@event.duration%></i
-      >
+      <h5 class="card-title font-weight-bold mb-4"><%=@event.title%></h5>
+      <p class="card-subtitle mb-2">date: <%=@event.start_date%> || durée: <%=@event.duration%> heures</p>
       <p class="card-text"><%=@event.description%></p>
-      <p class="card-footer bg-light">prix: <%=@event.price%>€</p>
+      <p class="card-footer text-info">prix: <%=@event.price%>€</p>
       <% if user_signed_in? && !current_user.is_already_attending?(@event) &&
       !current_user.is_admin?(@event) %> 
         <%= link_to"Rejoindre", new_event_attendance_path(@event.id), class: "btn btn-secondary btn-lg" %>
@@ -26,7 +33,7 @@
       <%end%> 
       
       <%if current_user == @event.admin%> 
-        <%= link_to "Edit", edit_event_path(@event.id), class:"btn-primary"%> 
+        <%= link_to "Edit", edit_event_path(@event.id), class:"btn btn-secondary"%> 
       <%end%>
 
     </div>
