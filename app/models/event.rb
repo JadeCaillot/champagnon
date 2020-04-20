@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   belongs_to :admin, class_name:"User"
   has_many :attendances
   has_many :user, through: :attendances
+  has_many_attached :images
 
   validates :start_date, presence: true 
   before_update :past_event?
