@@ -1,7 +1,8 @@
-# README
+# Champagnon
 
 This app is made as part of the bootcamp The Hacking Project.
-It aims at creating a realistic database in Ruby on Rails that represents a Airbnb for dogsitter website : dogsitter make strolls with dogs and both of them are tight to a city.
+It aims at creating a realistic database in Ruby on Rails. The model for it was the app Eventbrite. It was the second complete project of the training.
+It is an app designed to allow champagne amateurs to meet in charming locations, tasting together very fine bottles of the finest champagne. 
 
 ## The Ruby version
 
@@ -36,7 +37,6 @@ access to heroku app:
 We have used some additional Gems such as:
 
 Faker gem for generating random data
-gem 'table_player'
 gem 'devise'
 gem 'stripe'
 gem 'dotenv'
